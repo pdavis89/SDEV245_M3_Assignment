@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crypto Utility Web App</title>
+</head>
+<body>
+    <h1>Crypto Utility Web App</h1>
+
+    <h2>SHA-256 Hash (String)</h2>
+    <form method="POST">
+        <input type="hidden" name="action" value="hash_string">
+        <input type="text" name="input_text" placeholder="Enter text">
+        <button type="submit">Hash</button>
+    </form>
+
+    <h2>SHA-256 Hash (File)</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="action" value="hash_file">
+        <input type="file" name="input_file">
+        <button type="submit">Hash File</button>
+    </form>
+
+    <h2>Caesar Cipher</h2>
+    <form method="POST">
+        <input type="hidden" name="action" value="caesar">
+        <input type="text" name="input_text" placeholder="Enter text">
+        <input type="number" name="shift" value="3">
+        <select name="mode">
+            <option value="encrypt">Encrypt</option>
+            <option value="decrypt">Decrypt</option>
+        </select>
+        <button type="submit">Run</button>
+    </form>
+
+    <h2>Sign File (OpenSSL)</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="action" value="sign">
+        <p>File:</p><input type="file" name="input_file">
+        <p>Private Key:</p><input type="file" name="private_key">
+        <button type="submit">Sign</button>
+    </form>
+
+    <h2>Verify Signature</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="action" value="verify">
+        <p>File:</p><input type="file" name="input_file">
+        <p>Signature:</p><input type="file" name="signature">
+        <p>Public Key:</p><input type="file" name="public_key">
+        <button type="submit">Verify</button>
+    </form>
+
+    {% if output %}
+        <h2>Output:</h2>
+        <pre>{{ output }}</pre>
+    {% endif %}
+</body>
+</html>
